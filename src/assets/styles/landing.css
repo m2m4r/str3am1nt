@@ -1,0 +1,26 @@
+#card-dev{
+
+    width:75%;
+    margin:auto;
+    margin-top: 10rem;
+    height: 200px;
+  
+    
+
+}
+
+#card-feature{
+
+    height: 300px;
+}
+
+
+@media only screen and (min-width: 600px) {
+    #card-dev {
+      width: 30%;
+      margin-left:4rem ;
+      margin-right: 4rem;
+      
+
+    }
+  }

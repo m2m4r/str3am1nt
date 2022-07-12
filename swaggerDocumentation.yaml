@@ -1,0 +1,467 @@
+openapi: 3.0.1
+info:
+  title: StreaMint
+  description: Web 3.0 Streaming Platform
+  contact:
+    email: streamint-3@gmail.com
+  license:
+    name: StreaMint - Web 3.0 Streaming Platform
+    url: http://localhost:3000
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /user/register:
+    post:
+      tags:
+      - User
+      summary: User Attendance Confirmation
+      description: The registration is required to confirm the attendance to the private event. It impacts in the database creating a new user. Name, last name and the registration of the same email where the invitation was sent is required. Otherwise, the registration will be rejected.
+      responses:
+        201:
+          description: Created
+  /user/login:
+    post:
+      tags:
+      - User
+      summary: Platform access
+      description: User/Admin access. In this step it checks if the user exists in database to allow access, and if is already logged in other device in order to block access and prevent server crash, also the attenddance of uninvited users, too.
+      responses:
+        204:
+          description: Unauthorized.
+        200:
+          description: OK.
+  /user/update:
+    put:
+      tags:
+      - User
+      summary: User Update
+      description: The user is fetched in database and updated at the provided parameters.
+      responses:
+        200:
+          description: OK
+  /user/logout:
+    post:
+      tags:
+      - User
+      summary: Logging out
+      description: User/Admin logging out streaming/dashboard.
+      responses:
+        200:
+          description: OK
+  /user/me:
+    get:
+      tags:
+      - User
+      summary: Reading user information
+      description: This route returns user information.
+      responses:
+        200:
+          description: OK
+    post:
+      tags:
+      - User
+      summary: Reading token information
+      description: This route returns an event token.
+      responses:
+        200:
+          description: OK
+  /user/createRole:
+    post:
+      tags:
+      - User
+      summary: User Roles
+      description: Creating user role. It can be level 1, 2 and 3(user, admin y superadmin).
+      responses:
+        200:
+          description: OK
+  /user/list:
+    post:
+      tags:
+      - User
+      summary: Counting attendants
+      description: Counts a cuantity of users invited to some event.
+      responses:
+        200:
+          description: OK
+          content: {}
+    get:
+      tags:
+      - User
+      summary: Complete user list
+      description: Obtains a complete user list registered in platform.
+      responses:
+        200:
+          description: OK
+          content: {}
+          
+  /user/listEmail:
+    get:
+      tags:
+      - User
+      summary: Array of emails to mailing service
+      description: Array of email accounts fitered by event in order to send reminder notifications.
+      responses:
+        200:
+          description: OK
+          content: {}
+  /user/delete/{id}:
+    delete:
+      tags:
+      - User
+      summary: Delete user
+      description: Delete user
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: OK
+          content: {}
+  /user/findByEmail/{email}:
+    get:
+      tags:
+      - User
+      summary: Finding user by email
+      description: It returns a user object searching an existing email in the database.
+      parameters:
+      - name: email
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+  /user/saveAddress:
+    post:
+      tags:
+      - User
+      summary: Saving Metamask Address
+      description: Persisting metamask address in database to log in
+      responses:
+        200:
+          description: OK
+  /user/checkAddress:
+    get:
+      tags:
+      - User
+      summary: Fetching address in database 
+      description: Fetch the address in database to allow user log in
+      responses:
+        200:
+          description: OK
+  /user/handleError:
+    get:
+      tags:
+      - User
+      summary: Email not found to resend token
+      description: Handles email error while resending token at user request.
+      responses:
+        200:
+          description: OK
+  /user/getPOAP:
+    get:
+      tags:
+      - User
+      summary: Obtaining POAP link
+      description: Obtains the POAP link to render the QR code and claim it.
+      responses:
+        200:
+          description: OK
+  /event/addEvent:
+    post:
+      tags:
+      - Event
+      summary: Adding an event
+      description: The event must have title, stream URL and a start date scheduled. 
+      responses:
+        200:
+          description: OK
+          content: {}
+  /event/modifyEvent/{id}:
+    put:
+      tags:
+      - Event
+      summary: Updating event
+      description: The admin has the oportunity to update the event in any parameter and the users will receive an email notification.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: OK
+          content: {}
+  /event/deleteEvent/{id}:
+    delete:
+      tags:
+      - Event
+      summary: Deleting event
+      description: The admin has the oportunity to delete the event scheduled and the users will receive an email notification.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: OK
+          content: {}
+  /event/findEvents:
+    get:
+      tags:
+      - Event
+      summary: Event Inventory
+      description: Returning all events in inventory.
+      responses:
+        200:
+          description: OK
+          content: {}
+  /event/findEvent/{title}:
+    get:
+      tags:
+      - Event
+      summary: Event by title
+      description: Returns the event information fetching by title.
+      parameters:
+      - name: title
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content: {}
+  /event/findEventWithUsers:
+    get:
+      tags:
+      - Event
+      summary: Event and users invited
+      description: It returns the event information and users invited.
+      responses:
+        200:
+          description: OK
+          content: {}
+  /event/findEventId/{id}:
+    get:
+      tags:
+      - Event
+      summary: Fetching event by eventId
+      description: Returns the event fetching by eventId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: OK
+          content: {}
+  /event/findToken:
+    get:
+      tags:
+      - Event
+      summary: Fetching event by token
+      description: Returns the event searching the event token
+      responses:
+        200:
+          description: OK
+  /logs/:
+    get:
+      tags:
+      - Logs
+      summary: Admin activity information
+      description: Returns a list of actions done by the administrator users
+        del sitio
+      responses:
+        200:
+          description: OK
+          content: {}
+    post:
+      tags:
+      - Logs
+      summary: Logging admin activity
+      description: Logging admin activity to obtain a list of actions done by the users with administration role
+      responses:
+        200:
+          description: OK
+          content: {}
+  /logs/createOrModifyLog:
+    get:
+      tags:
+      - Logs
+      summary: Create or modify reminder log
+      description: Creates or modifies the reminder log checking if the reminder email was already sent
+      responses:
+        200:
+          description: OK
+          content: {}
+  /geoip/:
+    get:
+      tags:
+      - Geolocation
+      summary: Obtaining user geolocation
+      description: Obtaining user geolocalization detecting IP and the use of a library to check the geolocalization information
+      responses:
+        200:
+          description: OK
+          content: {}
+  /nodemailer/sendEmail:
+    post:
+      tags:
+      - Nodemailer
+      summary: Invite Email
+      description: The user receive an email with an invitation to an event
+      responses:
+        200:
+          description: OK
+          content: {}
+  /nodemailer/sendToken:
+    post:
+      tags:
+      - Nodemailer
+      summary: Token Receipt Email
+      description: The user receive an email with the access token to an event
+      responses:
+        200:
+          description: OK
+          content: {}
+  /nodemailer/sendReminder:
+    post:
+      tags:
+      - Nodemailer
+      summary: Reminder email
+      description: The user receives a reminder email 24 hs before the event starting
+      responses:
+        200:
+          description: OK
+          content: {}
+  /nodemailer/modifyNotification:
+    post:
+      tags:
+      - Nodemailer
+      summary: Event update notification
+      description: The user receive an email when the event has been modified
+      responses:
+        200:
+          description: OK
+          content: {}
+  /nodemailer/deleteNotification:
+    post:
+      tags:
+      - Nodemailer
+      summary: Event delete notification
+      description: The user receive an email when the event has been deleted
+      responses:
+        200:
+          description: OK
+          content: {}
+  /chats/addMessage:
+    post:
+      tags:
+      - Nodemailer
+      summary: Storing chatroom messages
+      description: This route impacts in firestore and storages a message sent by an user in the chatroom
+      responses:
+        200:
+          description: OK
+          content: {}
+  /chats/chatList:
+    get:
+      tags:
+      - Nodemailer
+      summary: Obtaining all chatroom messages
+      description: This route impacts in firestore and shows the complete list of messages sent by all users in the chatroom
+      responses:
+        200:
+          description: OK
+          content: {}
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        salt:
+          type: string
+        isLoggedIn:
+          type: boolean
+        publicAddress:
+          type: string
+        poapLink:
+          type: string
+    Event:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        description:
+          type: string
+        initialDate:
+          type: string
+        dayBefore:
+          type: string
+        token:
+          type: string
+        url:
+          type: string
+    Log:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        userId:
+          type: string
+        eventId:
+          type: integer
+        email:
+          type: string
+        action:
+          type: string
+        payload:
+          type: string
+    Chatroom:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        eventId:
+          type: string
+        userId:
+          type: string
+        userName:
+          type: string
+        message:
+          type: string
+    Role:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        rolName:
+          type: string

@@ -1,0 +1,23 @@
+.card-img-top{
+
+
+width:100%;
+
+
+}
+
+.loquesea{
+    width: 100%;
+}
+
+.card-text{
+
+    max-width: 40ch;
+    color :white;
+    font-size: 0.5em;
+    width:90%;
+    margin-top: 1em;
+    margin-left:1em;
+
+
+}

@@ -1,0 +1,21 @@
+.video-container {
+  
+  overflow: hidden;
+
+  width:85%;
+  margin-top:15%;
+  margin-left :5%;
+}
+
+.video-container::after {
+  padding-top: 56.25%;
+  display: block;
+  content: '';
+}
+
+.video-container iframe {
+  position: absolute;
+
+  width: 60%;
+  height: 60%;
+}

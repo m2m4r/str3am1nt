@@ -1,0 +1,14 @@
+
+.navRight{
+    float:right;
+}
+.welcome{
+    color:white;
+    margin-top: 1.41em;
+    margin-left: 2.5em;
+    margin-right: 2.5em;
+    font-size:1em;
+}
+.welcome:hover{
+    color:white
+}

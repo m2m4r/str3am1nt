@@ -1,0 +1,53 @@
+.myFont {
+  font-family: "Dela Gothic One", cursive;
+  width: 90%;
+  margin-top: 2%;
+}
+
+#count {
+}
+
+#clockdiv {
+  color: #fff;
+  display: inline-block;
+
+  text-align: center;
+
+  width: 90%;
+  row-gap: 1em;
+}
+
+#clockdiv > .row {
+  padding: 10px;
+  border-radius: 10px;
+  background: transparent;
+  display: inline-block;
+}
+
+#clockdiv .row > .col {
+  padding: 0.1em;
+  background: #0e0000;
+  display: inline-block;
+  margin-top: 0.1em;
+  font-size: 4em;
+  margin: auto;
+}
+
+#clockdiv .row > .smalltext {
+  padding: 0.1em;
+  background: #0e0000;
+  display: inline-block;
+  margin-top: 0.1em;
+  font-size: 2em;
+}
+
+@media (min-width: 1024px) {
+
+  #clockdiv .row > .col {
+    padding: 0.1em;
+    background: #0e0000;
+    display: inline-block;
+    margin-top: 0.1em;
+    font-size: 6em;
+  }
+}

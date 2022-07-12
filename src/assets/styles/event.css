@@ -1,0 +1,30 @@
+    .eventos {
+    margin-top: 20%;
+    } 
+.title {
+  color: white;
+}
+
+p{
+    color:white;
+    /* vertical-align: center; */
+    
+}
+
+tr{
+    color:white;
+}
+.miboton{
+    margin:4%;
+}
+.miboton-1{
+    margin:4%;
+    color: white;
+}
+.miboton:hover{
+    color: white;
+}
+li{
+    list-style: none;
+}
+

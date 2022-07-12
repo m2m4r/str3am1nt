@@ -1,0 +1,418 @@
+openapi: 3.0.1
+info:
+  title: Proyecto Profesional Bootcamp - Tonic-3
+  description: API desarrollada por alumnos del Bootcamp de Plataforma5 para la etapa de Proyecto
+    Profesional, en base al proyecto propuesto por la compañía Tonic-3. 
+    <br></br>
+    <b>Alumnos:</b>
+    <n>Ignacio Calvagna</n>
+    <n>- Martin Martinez Rizzi</n>
+    <n>- Fernando Leonhardt</n>
+    <n>- Blas Palukas</n>
+    <n>- María Agustina Cassi</n>
+    <br></br>
+    <b>Scrum Master:</b>
+    <n>Agustin Radeland</n>
+    <br></br>
+    <b>Equipo Tonic-3:</b>
+    <n>Darío Espósito -</n>
+    <n>Sergio Gaffoglio -</n>
+    <n>Evelin Giselle Kichilewicz</n>
+    
+  contact:
+    email: somostonic-3@gmail.com
+  license:
+    name: Plataforma de Eventos Virtuales
+    url: http://localhost:3000
+  version: 0.1.9
+servers:
+- url: /
+paths:
+  /register:
+    post:
+      tags:
+      - Front-End
+      summary: Usuario se registra con datos y email
+      description: Usuario se registra con nombre, apellido y correo electrónico.
+      responses:
+        200:
+          description: OK
+          content: {}
+  /login:
+    post:
+      tags:
+      - Front-End
+      summary: Usuario se loguea con correo electrónico y token
+      description: Usuario se loguea con correo electrónico y token autogenerado recibido
+        en su correo electrónico.
+      responses:
+        200:
+          description: OK
+          content: {}
+  /home:
+    get:
+      tags:
+      - Front-End
+      summary: Landing-page con contador/evento
+      description: En la landing page se renderizará un contador o un evento dependiendo
+        de la fecha y hora actuales en comparación con la fecha y hora programadas
+        del evento
+      responses:
+        200:
+          description: OK
+          content: {}
+  /administrator:
+    get:
+      tags:
+      - Front-End
+      summary: Módulo de administrador
+      description: En esta landing page, el super usuario ejerce sus facultades de
+        administrador, creando/editando/eliminando eventos, invitando/eliminando usuarios,
+        como así también puede acceder a un logueo de la actividad del sitio
+      responses:
+        200:
+          description: OK
+          content: {}
+  /administrator/events:
+    get:
+      tags:
+      - Front-End
+      summary: Módulo de Eventos
+      description: En este módulo, el administrador crea/modifica/elimina un evento
+      responses:
+        200:
+          description: OK
+          content: {}
+  /administrator/users:
+    get:
+      tags:
+      - Front-End
+      summary: Módulo de Usuarios
+      description: En este módulo, el administrador lista/elimina usuarios
+      responses:
+        200:
+          description: OK
+          content: {}
+  /administrator/logs:
+    get:
+      tags:
+      - Front-End
+      summary: Módulo de Actividad
+      description: En este módulo, el administrador ve un listado de la actividad
+        reciente del sitio
+      responses:
+        200:
+          description: OK
+          content: {}
+  /user/register:
+    post:
+      tags:
+      - User
+      summary: Registro de usuario
+      description: Usuario se registra con nombre, apellido y correo electrónico.
+        Se crea un nuevo usuario en la base de datos.
+      responses:
+        201:
+          description: CREATED
+          content: {}
+  /user/login:
+    post:
+      tags:
+      - User
+      summary: Logueo de usuario
+      description: Usuario se loguea con correo electrónico y token.
+      responses:
+        200:
+          description: OK
+          content: {}
+  /user/update:
+    put:
+      tags:
+      - User
+      summary: Usuario se registra con datos y email
+      description: Usuario se registra con nombre, apellido y correo electrónico.
+      responses:
+        201:
+          description: OK
+          content: {}
+  /user/logout:
+    post:
+      tags:
+      - User
+      summary: Usuario se desloguea
+      description: Usuario se desloguea.
+      responses:
+        200:
+          description: OK
+          content: {}
+  /user/me:
+    get:
+      tags:
+      - User
+      summary: Usuario logueado
+      description: Usuario con sesión iniciada.
+      responses:
+        200:
+          description: OK
+          content: {}
+    post:
+      tags:
+      - User
+      summary: Obtención del token
+      description: Se obtiene el token.
+      responses:
+        200:
+          description: OK
+          content: {}
+  /user/createRole:
+    post:
+      tags:
+      - User
+      summary: Creación de rol de usuario
+      description: Creación de rol de usuario con niveles 1, 2 y 3(user, admin y superadmin)
+      responses:
+        200:
+          description: OK
+          content: {}
+  /user/list:
+    get:
+      tags:
+      - User
+      summary: Lista de usuarios
+      description: Obtención de la lista de usuarios
+      responses:
+        200:
+          description: OK
+          content: {}
+  /user/delete/{id}:
+    delete:
+      tags:
+      - User
+      summary: Borrar un usuario
+      description: Eliminación de un usuario
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: OK
+          content: {}
+  /user/findByEmail/{email}:
+    get:
+      tags:
+      - User
+      summary: Búsqueda de usuario por email
+      description: Búsqueda de un usuario por correo electrónico registrado.
+      parameters:
+      - name: email
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content: {}
+  /event/addEvent:
+    post:
+      tags:
+      - Event
+      summary: Usuario se registra con datos y email
+      description: Usuario se registra con nombre, apellido y correo electrónico.
+      responses:
+        200:
+          description: OK
+          content: {}
+  /event/modifyEvent/{id}:
+    put:
+      tags:
+      - Event
+      summary: Usuario se registra con datos y email
+      description: Usuario se registra con nombre, apellido y correo electrónico.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: OK
+          content: {}
+  /event/deleteEvent/{id}:
+    delete:
+      tags:
+      - Event
+      summary: Usuario se registra con datos y email
+      description: Usuario se registra con nombre, apellido y correo electrónico.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: OK
+          content: {}
+  /event/findEvents:
+    get:
+      tags:
+      - Event
+      summary: Usuario se registra con datos y email
+      description: Usuario se registra con nombre, apellido y correo electrónico.
+      responses:
+        200:
+          description: OK
+          content: {}
+  /event/findEvent/{title}:
+    get:
+      tags:
+      - Event
+      summary: Usuario se registra con datos y email
+      description: Usuario se registra con nombre, apellido y correo electrónico.
+      parameters:
+      - name: title
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content: {}
+  /event/findEventId/{id}:
+    get:
+      tags:
+      - Event
+      summary: Usuario se registra con datos y email
+      description: Usuario se registra con nombre, apellido y correo electrónico.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: OK
+          content: {}
+  /logs/:
+    get:
+      tags:
+      - Logs
+      summary: Obtención del registro de logs del sitio
+      description: Obtención de los logs en una lista como registro de la actividad
+        del sitio
+      responses:
+        200:
+          description: OK
+          content: {}
+    post:
+      tags:
+      - Logs
+      summary: Creación del registro de logs del sitio
+      description: Creación de los logs para tener un registro de la actividad del
+        sitio
+      responses:
+        200:
+          description: OK
+          content: {}
+  /geoip/:
+    get:
+      tags:
+      - Geolocalization
+      summary: Obtención de la geolocalización del usuario mediante el IP
+      description: Obtención de la geolocalización del usuario mediante el IP y la
+        utilización de una librería para obtener información del IP capturado
+      responses:
+        200:
+          description: OK
+          content: {}
+  /nodemailer/sendEmail:
+    post:
+      tags:
+      - Nodemailer
+      summary: Envío del correo electrónico de invitación
+      description: El usuario recibe un correo electónico con una invitación al evento.
+      responses:
+        200:
+          description: OK
+          content: {}
+  /nodemailer/sendToken:
+    post:
+      tags:
+      - Nodemailer
+      summary: Envío de correo electrónico con el token del evento
+      description: Usuario se registra con correo electrónico y token
+      responses:
+        200:
+          description: OK
+          content: {}
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          format: int64
+        lastName:
+          type: string
+          format: int64
+        email:
+          type: string
+          format: int64
+        password:
+          type: string
+        salt:
+          type: string
+    Event:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+          format: int64
+        description:
+          type: string
+          format: int64
+        initialDate:
+          type: string
+          format: int64
+        token:
+          type: string
+          format: int64
+        url:
+          type: string
+          format: int64
+    Log:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        userId:
+          type: string
+        email:
+          type: string
+        action:
+          type: string
+        payload:
+          type: string
+    Role:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        rolName:
+          type: string

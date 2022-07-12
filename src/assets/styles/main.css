@@ -1,0 +1,34 @@
+.main {
+  padding-top: 5em;
+  background: rgb(0, 151, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 151, 255, 1) 0%,
+    rgba(115, 198, 255, 1) 34%,
+    rgb(32, 236, 226) 74%
+
+  )
+  ;
+  width: 100%;
+
+  
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: auto;
+  width:fit-content;
+}
+
+.video-wrapper{
+  width: 100%;
+  margin: auto;
+ 
+}
+
+@media (min-width: 1024px) {
+
+  .video-wrapper{
+    width: 100%;
+    padding: 1em 10em;
+    margin: auto;
+  }
+}

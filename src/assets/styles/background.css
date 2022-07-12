@@ -1,0 +1,20 @@
+.background{
+
+    background-color: rgb(122, 0, 0) ;    
+    background-image:url("../img/backWrapper.png");
+    width: 75%;
+    margin-left: 3em;
+    border-radius: 80px 22px 80px 22px;
+    color:black;
+
+}
+
+
+@media (min-width: 1024px) {
+
+    .background{
+        width: 90%;
+    
+    }
+  }
+  
