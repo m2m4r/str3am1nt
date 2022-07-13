@@ -12,16 +12,7 @@ import * as bcrypt from "bcryptjs";
 import "../assets/styles/login.css";
 import "../assets/styles/form.css";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyChblLN2L_1vL75QXQlBdzlnjmFreuDVVA",
-  authDomain: "tonic3-6cbc8.firebaseapp.com",
-  databaseURL: "https://tonic3-6cbc8-default-rtdb.firebaseio.com",
-  projectId: "tonic3-6cbc8",
-  storageBucket: "tonic3-6cbc8.appspot.com",
-  messagingSenderId: "291368280511",
-  appId: "1:291368280511:web:f270480e6a0a918f2b810a",
-  measurementId: "G-KNVRT9JCE5",
-};
+
 
 const app = initializeApp(firebaseConfig);
 
